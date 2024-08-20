@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>간단한 계산기</title>
+</head>
+<body>
+<h3>덧셈 계산기</h3>
+	<form action="calc" method="POST">
+		<label for="x">x: </label>
+		<input type="text" name="x" id="x" th:value="${x}" placeholder="정수 입력">
+		<!-- th:value="${}" : 서버에서 받은 값을 thymeleaf로 변환해서 넣으라는 뜻  -->
+		
+		<label for="y">y: </label>
+		<input type="text" name="y" id="y" th:value="${y}" placeholder="정수 입력">
+		
+		<input type="submit" value="=">
+		<input type="button" id="clear" value="C">
+		
+		<p id="result"> 정답: [[ ${z} ]] </p> <!-- z값은 서버쪽에 갔다 와야 출력됨 -->
+	</form>
+	<script>
+		document.getElementById("clear").addEventListener('click', function() {
+			document.getElementById("x").value = "";
+			document.getElementById("y").value = "";
+			document.getElementById("result").innerHTML = " 정답 : ";
+		})
+	</script>
+</body>
+</html>
