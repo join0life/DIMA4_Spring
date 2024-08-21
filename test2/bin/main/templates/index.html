@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Fitness 정보 입력</title>
+</head>
+<body>
+	<h3>Fitness 정보 입력</h3>
+	<form action="regist" method="POST">
+		<label for="name">이름 : </label>
+		<input type="text" id="name" name="name" placeholder="이름을 입력"><br>
+		
+		<label>성별 : 
+		<input type="radio" name="gender" value="남성" checked>남성
+		<input type="radio" name="gender" value="여성">여성<br>
+		</label>
+		
+		<label for="height">키 : </label>
+		<input type="text" id="height" name="height" placeholder="키를 입력"><br>
+		
+		<label for="weight">몸무게 : </label>
+		<input type="text" id="weight" name="weight" placeholder="몸무게를 입력"><br>
+		
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+		
+	
+	</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>객체 데이터 꺼내기</title>
+</head>
+<body>
+	<h2>객체 데이터 꺼내기</h2>
+	<p> 전체 출력 : [[ ${friend} ]] </p> <!-- toString()으로 출력 -->
+	<p>
+	이름 : [[ ${friend.username} ]]<br>
+	<!-- "friend"로 담아서 friend로 꺼냄,
+	'.username' 붙이면 getter로 꺼내는 방식이 됨(friend.getUsername()으로 자동으로 바뀜) -->
+	나이 : [[ ${friend.age } ]]<br> 
+	전화번호 : [[ ${friend.phone }]]<br> 
+	생년월일 : [[ ${friend.birthday }]]<br>
+	성향 : [[ ${friend.active }]]<br>
+	</p>
+	
+</body>
+</html>
