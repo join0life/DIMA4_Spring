@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>친구 목록 출력</title>
+</head>
+
+<body>
+	<h2>친구 목록 출력</h2>
+	<div>
+		<a th:href="@{/}"><img th:src="@{/images/home.png}" alt="첫화면으로"></a>
+	</div>
+	<p th:if="${#lists.isEmpty(list)}">친구 목록이 없습니다.</p>
+	<p th:unless="${#lists.isEmpty((list))}">
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>나이</th>
+			<th>전화번호</th>
+			<th>생년월일</th>
+			<th>성향</th>
+			<th></th>
+		</tr>
+		<tr th:each="friend, status : ${list}">
+			<td th:text="${status.count}">번호</td>
+			<td th:text="${friend.fname}">이름</td>
+			<td th:text="${friend.age}">나이</td>
+			<td th:text="${friend.phone}">전화번호</td>
+			<td th:text="${friend.birthday}">생년월일</td>
+			<td th:text="${friend.active} ? '외향적' : '내향적'">성향</td>
+			<td>
+				<input type="button" id="deleteOne" value="삭제">
+				<input type="button" id="updateOne" value="수정">
+			</td>
+		</tr>
+	</table>
+	</p>
+</body>
+
+</html>
