@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thymeleaf First</title>
+</head>
+
+<body>
+    <h2>Thymeleaf First</h2>
+    <ul>
+        <li><a th:href="@{/display/text}">1. 문자 출력하기</a></li>
+        <li><a th:href="@{/display/condition}">2. 조건문과 반복문</a></li>
+        <li><a th:href="@{/display/basicObj}">3. 기본객체 다루기(숫자, 날짜)</a></li>
+        <li><a th:href="@{/display/receive(name=홍길동, age=35)}">4. 타임리프로 파라미터 보내기</a></li>
+    </ul>
+</body>
+
+</html>

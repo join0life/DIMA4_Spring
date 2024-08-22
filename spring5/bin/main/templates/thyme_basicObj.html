@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 객체 다루기</title>
+</head>
+
+<body>
+    <h2>기본 객체 다루기(숫자)</h2>
+    <ul>
+        <li>Integer(기본): <span th:text="${intNum}"></span></li>
+        <!-- 10자리로 출력 -->
+        <li>Integer(10자리): <span th:text="${#numbers.formatInteger(intNum, 10)}"></span></li>
+        <!-- 세자리마다 점 찍기 -->
+        <li>Integer(점): <span th:text="${#numbers.formatInteger(intNum, 3, 'POINT')}"></span></li>
+        <li>Integer(콤마): <span th:text="${#numbers.formatInteger(intNum, 3, 'COMMA')}"></span></li>
+        <li>Integer(none): <span th:text="${#numbers.formatInteger(intNum, 3, 'NONE')}"></span></li>
+        <li>Integer(3자리): <span th:text="${#numbers.formatInteger(intNum, 3)}"></span></li>
+        <li>-----------------------------</li>
+        <li>Double(기본): <span th:text="${doubleNum}"></span></li>
+        <li>Double(소수 2자리): <span th:text="${#numbers.formatDecimal(doubleNum, 3, 2)}"></span></li>
+        <!-- 가장 많이 쓰는 포맷(세자리마다 콤마, 소수 이하 2자리) -->
+        <li>Double(천단위 콤마, 소수 2자리): <span th:text="${#numbers.formatDecimal(doubleNum, 3, 'COMMA', 2, 'POINT')}"></span>
+        <li>Double(천단위 공백, 소수 2자리): <span
+                th:text="${#numbers.formatDecimal(doubleNum, 3, 'WHITESPACE', 3, 'POINT')}"></span>
+        </li>
+
+        <li>-----------------------------</li>
+        <li>Percent(기본): <span th:text="${percent}"></span></li>
+        <!-- 전달인자 무조건 3개 / 0 : 상위 자릿수인데 의미는 없음 -->
+        <li>Percent(백분율, 2자리): <span th:text="${#numbers.formatPercent(percent, 0, 2)}"></span></li>
+
+        <li>-----------------------------</li>
+        <li>Money: <span th:text="${money}"></span></li>
+        <li>Money(통화기호): <span th:text="${#numbers.formatCurrency(money)}"></span></li>
+    </ul>
+</body>
+
+</html>
