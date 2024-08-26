@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>친구 목록 출력</title>
+</head>
+
+<body>
+	<h2>친구 목록 출력</h2>
+	<div>
+		<a th:href="@{/}"><img th:src="@{/images/home.png}" alt="첫화면으로"></a>
+	</div>
+	<p th:if="${#lists.isEmpty(list)}">친구 목록이 없습니다.</p>
+	<div th:unless="${#lists.isEmpty(list)}">
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>나이</th>
+			<th>전화번호</th>
+			<th>생년월일</th>
+			<th>성향</th>
+			<th></th>
+		</tr>
+		<tr th:each="friend, status : ${list}">
+			<td th:text="${status.count}">번호</td>
+			<td th:text="${friend.fname}">이름</td>
+			<td th:text="${friend.age}">나이</td>
+			<td th:text="${friend.phone}">전화번호</td>
+			<td th:text="${friend.birthday}">생년월일</td>
+			<td th:text="${friend.active} ? '외향적' : '내성적'">성향</td>
+			<td>
+				<!-- PK값을 알아야 삭제나 수정을 할 수 있다. 사용자 정의한 속성 data-seq  -->
+				<input type="button" class="deleteOne" th:data-seq="${friend.fseq}" value="삭제">
+				<input type="button" class="updateOne" th:data-seq="${friend.fseq}" value="수정">
+			</td>
+		</tr>
+	</table>
+	</div>
+	
+	<form id="sendOne" th:action="@{/deleteOne}" method="GET">
+		<input type="hidden" id="fseq" name="fseq" value="" >
+	</form>
+	
+	<script>
+		let delBtn    = document.getElementsByClassName("deleteOne");   // 배열로 반환함
+		let updateBtn = document.getElementsByClassName("updateOne"); 
+		
+		for(let i=0; i<delBtn.length; ++i ) {
+			delBtn[i].addEventListener('click', delFriend);
+			updateBtn[i].addEventListener('click', updateFriend);
+		}
+		
+		// 정보 삭제 함수
+		function delFriend() {
+			let seq = this.getAttribute("data-seq")
+			document.getElementById("fseq").value=seq;
+			document.getElementById("sendOne").action = 'deleteOne';
+			document.getElementById("sendOne").submit();
+		}
+		
+		// 정보 수정 함수
+		function updateFriend() {
+			let seq = this.getAttribute("data-seq")
+			document.getElementById("fseq").value=seq;
+			document.getElementById("sendOne").action = 'updateOne';
+			document.getElementById("sendOne").submit();
+		}
+		
+		
+	</script>
+
+</body>
+
+</html>

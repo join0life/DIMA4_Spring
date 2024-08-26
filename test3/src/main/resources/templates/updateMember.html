@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보 수정</title>
+</head>
+<body>
+    <h2>수정</h2>
+    <div>
+        <a th:href="@{/}"><img th:src="@{/images/home.png}" alt="첫화면으로"></a>
+    </div>
+    	<form th:action="@{/updateOne}" method="POST">
+    		<input type="hidden" th:value="${fitness.seq}" name="seq" >
+			<label for="name">이름:  </label>
+			<input type="text" id="name" name="name" th:value="${fitness.name}" readonly><br>
+			
+			<label>성별:
+				<input type="radio" name="gender" value=1 th:checked="${fitness.gender}">남자&nbsp;
+				<input type="radio" name="gender" value=0 th:checked="not ${fitness.gender}">여자
+			</label><br>
+			
+			<label for="height">키:  </label>
+			<input type="text" id="height" name="height" th:value="${fitness.height}"><br>
+			
+			<label for="weight">몸무게:  </label>
+			<input type="text" id="weight" name="weight" th:value="${fitness.weight}"><br><br>
+			
+			<input type="submit" value="저장">
+			<input type="reset" value="취소">
+	</form>
+</body>
+</html>

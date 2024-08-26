@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멤버 출력</title>
+</head>
+
+<body>
+    <h2>멤버 출력</h2>
+    <div>
+        <a th:href="@{/}"><img th:src="@{/images/home.png}" alt="첫화면으로"></a>
+
+    </div>
+    <p th:if="${#lists.isEmpty(list)}">친구 목록이 없습니다.</p>
+    <div th:unless="${#lists.isEmpty(list)}">
+        <table border="1">
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>성별</th>
+                <th>키</th>
+                <th>몸무게</th>
+                <th>등록시간</th>
+                <th>표준체중</th>
+                <th>bmi</th>
+                <th>bmi결과</th>
+                <th></th>
+            </tr>
+            <tr th:each="fitness, status: ${list}">
+                <td th:text="${status.count}">번호</td>
+                <td th:text="${fitness.name}">이름</td>
+                <td th:text="${fitness.gender} ? '남자' : '여자'">성별</td>
+                <td th:text="${fitness.height}">키</td>
+                <td th:text="${fitness.weight}">몸무게</td>
+                <td th:text="${fitness.joinDate}">등록시간</td>
+                <td th:text="${fitness.stdWeight}">표준체중</td>
+                <td th:text="${fitness.bmi}">bmi</td>
+                <td th:text="${fitness.bmiResult}">bmi결과</td>
+                <td>
+                    <!-- PK 값을 알아야 삭제나 수정을 할 수 있음. 사용자가 정의한 속성 data-seq -->
+                    <input type="button" class="deleteOne" th:data-seq="${fitness.seq}" value="삭제">
+                    <input type="button" class="updateOne" th:data-seq="${fitness.seq}" value="수정">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form id="sendOne" th:action="@{/deleteOne}" method="GET">
+        <input type="hidden" id="seq" name="seq" value="">
+    </form>
+
+
+    <script>
+        let delBtn = document.getElementsByClassName("deleteOne"); // 배열로 반환
+        let updateBtn = document.getElementsByClassName("updateOne");
+
+        for (let i = 0; i < delBtn.length; ++i) {
+            delBtn[i].addEventListener('click', delFriend);
+            updateBtn[i].addEventListener('click', updateFriend);
+        }
+
+        // 정보 삭제 함수
+        function delFriend() {
+            let fseq = this.getAttribute("data-seq");
+            document.getElementById("seq").value = fseq;
+            document.getElementById("sendOne").action = 'deleteOne';
+            document.getElementById("sendOne").submit();
+        }
+
+        // 정보 수정 함수
+        function updateFriend() {
+            let fseq = this.getAttribute("data-seq")
+            document.getElementById("seq").value = fseq;
+            document.getElementById("sendOne").action = 'updateOne';
+            document.getElementById("sendOne").submit();
+        }
+
+    </script>
+</body>
+
+</html>
