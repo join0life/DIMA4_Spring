@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+table {
+    width: 1000px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-collapse: collapse;
+
+}
+
+thead>tr {
+    background-color: #50a9ef;
+}
+
+tr {
+    border-bottom: 1px dotted gray;
+}
+
+td,
+th {
+    padding: 5px;
+}
+
+tbody tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
