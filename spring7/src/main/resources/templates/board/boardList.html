@@ -37,7 +37,7 @@
                         <option value="boardWriter" th:selected="${searchItem == 'boardWriter'}">작성자</option>
                         <option value="boardContent" th:selected="${searchItem == 'boardContent'}">글내용</option>
                     </select>
-                    <input type="text" name="searchWord" id="searchWord" th:value="${searchWord}">  <!-- 검색 버튼 안눌러도 남아있게 함 -->
+                    <input type="text" name="searchWord" id="searchWord" th:value="${searchWord}">  <!-- 검색 버튼 눌러도 남아있게 함 -->
                     <input type="button" id="search" value="검색" class="btn btn-primary">
                 </form>
             </div> <!-- end .search -->
