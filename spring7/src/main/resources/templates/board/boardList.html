@@ -74,7 +74,7 @@
                     		<img th:src="@{/images/attachment.png}" alt="첨부파일" width="10px">
                     	</span>
                     </td>
-                    <td class="writer" th:Text="${board.boardWriter}"></td>
+                    <td class="writer" th:text="${board.boardWriter}"></td>
                     <td class="hitcount" th:text="${board.hitCount}">7</td>
                     <td class="create_date" th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}">
                         2024-05-15</td>
