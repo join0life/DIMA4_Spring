@@ -62,7 +62,7 @@
                     <td class="no" th:text="${(list.number+1) * list.size - (list.size - status.count)}">1</td>
                     <td>
                     	<a th:href="@{/board/boardDetail(boardNum=${board.boardNum}, searchItem=${searchItem}, searchWord=${searchWord})}" 
-                    th:text="${board.boardTitle}"> 더워 추워 더워 추워</a>
+                    th:text="${board.boardTitle}"></a>
                     
                     <!-- 댓글 개수 출력 -->
                     <th:block th:if="${board.replyCount != 0}">
@@ -71,10 +71,10 @@
                     
                     <!-- 첨부파일 유무 -->
                     	<span th:if="${board.originalFileName != null}">
-                    		<img th:src="@{/images/attachment.png}" alt="삭제" width="10px">
+                    		<img th:src="@{/images/attachment.png}" alt="첨부파일" width="10px">
                     	</span>
                     </td>
-                    <td class="writer" th:Text="${board.boardWriter}">조유정</td>
+                    <td class="writer" th:Text="${board.boardWriter}"></td>
                     <td class="hitcount" th:text="${board.hitCount}">7</td>
                     <td class="create_date" th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}">
                         2024-05-15</td>
