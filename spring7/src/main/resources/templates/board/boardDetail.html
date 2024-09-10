@@ -14,6 +14,7 @@
 
 <body>
 	<!-- Ajax 전송할 때 필요한 정보 -->
+	<!-- javascript에서 value부분은 처리를 못하기 때문에 여기서 hidden으로 불러 옴 -->
 	<input type="hidden" id="boardNum" th:value="${board.boardNum}">
 	<input type="hidden" id="loginId"  th:value="${#authentication.name}">
 	
@@ -61,7 +62,7 @@
                 </td>
             </tr>
             <tr>
-                <th>첨부파일</th> <!-- 인증이 된 사람만 링크를 제공 -->
+                <th>첨부파일</th>
                 <td>
                     <span th:if="${board.originalFileName != null}">
                     	<a th:href="@{/board/download(boardNum=${board.boardNum})}" 
